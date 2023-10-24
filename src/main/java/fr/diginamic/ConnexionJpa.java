@@ -36,10 +36,10 @@ public class ConnexionJpa {
 		
 		
 		transaction.begin();
-		em.persist(region1);
-		em.persist(region2);
-		em.persist(region3);
-		em.persist(region4);
+//		em.persist(region1);
+//		em.persist(region2);
+//		em.persist(region3);
+//		em.persist(region4);
 		transaction.commit();
 		
 		int idRegion = 3;		
@@ -49,7 +49,9 @@ public class ConnexionJpa {
 		}else {
 			System.out.println("region Non trouvee pour ID : " + idRegion);
 		}
-		
+//		transaction.begin();
+//		r.setNom("LOIRE");
+//		transaction.commit();
 		em.close();
 		emFactory.close();
 	}
