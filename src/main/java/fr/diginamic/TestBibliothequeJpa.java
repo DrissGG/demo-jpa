@@ -12,7 +12,7 @@ import javax.persistence.Persistence;
  * @author driss
  *
  */
-public class TestJpa {
+public class TestBibliothequeJpa {
 
 	/**
 	 * @param args
@@ -28,6 +28,15 @@ public class TestJpa {
 			System.out.println("livre extraite de L'ID "+r.getId()+" auteur : "+ r.getAuteur() +" Titre: "+ r.getTitre());
 		}else {
 			System.out.println("livre Non trouvee pour ID : " + idLivre);
+		}
+		
+		int idEmprunt = 1;
+		Emprunt emprunt = em.find(Emprunt.class,idEmprunt);
+		if(emprunt!=null) {
+			System.out.println("id emprunt  "+emprunt.getId()+" date du debut : "+ emprunt.getDateDebut() +" date fin : "+ emprunt.getDateFin()+" livre : "+ emprunt.getLivres());
+			
+		}else {
+			System.out.println("emprunt  Non trouvee pour ID : " + idEmprunt);
 		}
 
 	}

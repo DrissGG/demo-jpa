@@ -3,10 +3,15 @@
  */
 package fr.diginamic;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
@@ -25,7 +30,11 @@ public class Livre {
 	private String titre;
 	private String auteur;
 	
-	
+	@ManyToMany
+    @JoinTable(name = "compo",
+            joinColumns = @JoinColumn(name = "id_emp"),
+            inverseJoinColumns = @JoinColumn(name = "id_liv"))
+    private List<Emprunt> emprunt;
 	/** Constructor
 	 * 
 	 */
@@ -67,6 +76,11 @@ public class Livre {
 	 */
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
+	}
+
+	@Override
+	public String toString() {
+		return "Livre [id=" + id + ", titre=" + titre + ", auteur=" + auteur +   "]";
 	}
 	
 	
